@@ -50,7 +50,10 @@ Those files contain
 * [*zBuffer.h, zBuffer.cpp*]()  
 
 
-## Pipeline
+## How to run the execute file
+```bash
+$ ./SegFSR "--ipath_of_ply" "path_to_the_input_point_cloud_in_ply_format" "--opath"  "output_path"
+```
 
 
 

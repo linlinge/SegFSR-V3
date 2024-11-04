@@ -68,6 +68,8 @@ class SegFSR
 		void ProjectionGenerator();
 		void Viewer(boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer);
 		void Run();
+		void ExtractLabels(string path);
+		void ExtractFilterCloud(string path);
 };
 
 

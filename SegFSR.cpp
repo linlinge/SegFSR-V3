@@ -233,3 +233,21 @@ void SegFSR::Viewer(boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer)
 	pcl::visualization::PointCloudColorHandlerRGBField<PointType> multi_color(cloud_); 	
 	viewer->addPointCloud<PointType> (cloud_, multi_color, "1"); 
 }
+
+void SegFSR::ExtractLabels(string path)
+{
+	vector<int> labels(cloud_->points.size(), 0);
+	for(int i=0; i<outlier_idx_.size(); i++){
+		labels[outlier_idx_[i]]=1;
+	}
+	ofstream fout(path);
+	for(int i=0; i<labels.size(); i++){
+		fout<<labels[i]<<endl;
+	}
+	fout.close();
+}
+
+void SegFSR::ExtractFilterCloud(string path)
+{
+	pcl::io::savePLYFileBinary(path, *cloud_filtered_);
+}
