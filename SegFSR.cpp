@@ -171,21 +171,20 @@ void SegFSR::Run()
 	
 	gettimeofday(&start, NULL);
 	//#pragma omp parallel for
-	for(int i=0;i<orientations_.size();i++){		
+	for(int i=0;i<orientations_.size();i++){										// tranverse all viewpoints
 		if(i!=1){
 			// cout<<	bufs_[i].img_.rows<<","<<bufs_[i].img_.cols<<endl;
-			FloodFill ff(bufs_[i].img_);		
-			
+			FloodFill ff(bufs_[i].img_);
 
 			for(int j=1;j<ff.result_.size();j++){
 				Vertices& ant=ff.result_[j];	
-				// if(i==3 && j==24)
-				// 	j=24;						
-				for(auto vtx:ant.dat_){
+				if(ant.size()< ff.result_[0].size()*0.5){
+					for(auto vtx:ant.dat_){
 					// cout<<vtx.first<<","<<vtx.second<<endl;
 					vector<int>& tmp=bufs_[i].dat_[vtx.first][vtx.second].dat_;
 					outlier_idx_.insert(outlier_idx_.end(),tmp.begin(),tmp.end());
-				}
+					}
+				}				
 			}
 		}
 		
@@ -250,4 +249,14 @@ void SegFSR::ExtractLabels(string path)
 void SegFSR::ExtractFilterCloud(string path)
 {
 	pcl::io::savePLYFileBinary(path, *cloud_filtered_);
+}
+
+void SegFSR::PrintLogs(string model_name)
+{
+	if(cloud_filtered_->points.size()==0){
+		ofstream fout("logs",ios::app);
+		fout<<"--------------------------------------------------"<<endl;
+		fout<<model_name<<endl;
+		fout.close();
+	}
 }

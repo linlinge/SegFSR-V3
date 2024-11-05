@@ -57,8 +57,7 @@ void FloodFill::floodFillUtil(cv::Mat& screen, int x, int y, Vertices& ant)
 			q.push(std::make_pair(pt.first, pt.second + 1));
             screen.at<uchar>(pt.first,pt.second + 1) = r;
 		}
-    }	
-	// cv::imwrite(to_string(wokaka++)+".png",screen);
+    }
 }
 
 FloodFill::FloodFill(cv::Mat& img) 
@@ -81,6 +80,8 @@ FloodFill::FloodFill(cv::Mat& img)
 			result_.push_back(ant);
 	}
 	
+	// cv::imwrite("1.png", img);
+
 	// cout<<wokaka++<<endl;
 	// collate result
 	sort(result_.begin(),result_.end(),[](Vertices& e1, Vertices& e2){return e1.size()>e2.size();});	

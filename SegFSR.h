@@ -60,7 +60,7 @@ class SegFSR
 		vector<V3> orientations_;
 		pcl::PointCloud<PointType>::Ptr cloud_;
 		pcl::PointCloud<PointType>::Ptr cloud_filtered_;
-		vector<ZBuffer> bufs_;  // n*1
+		vector<ZBuffer> bufs_;  // n*1		
 		
 		
 		void Init(pcl::PointCloud<PointType>::Ptr cloud);
@@ -70,15 +70,5 @@ class SegFSR
 		void Run();
 		void ExtractLabels(string path);
 		void ExtractFilterCloud(string path);
+		void PrintLogs(string model_name);
 };
-
-
-
-
-
-
-
-
-
-
-

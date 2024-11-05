@@ -9,8 +9,8 @@
             "request": "launch",
             "name": "Debug",
             "program": "${workspaceFolder}/build/SegFSR",
-            "args": ["--ipath_of_ply","/media/i9/MyPassport/linlinge/Dataset/23_MVTec_AD/mvtec_3d_anomaly_detection/bagel/test/combined/my_cvt_ply/bagel_000.ply",
-                     "--opath", "/media/i9/MyPassport/linlinge/Dataset/23_MVTec_AD/mvtec_3d_anomaly_detection/bagel/test/combined/my_cvt_ply/out"],
+            "args": ["--ipath_of_ply","/media/i9/gamma/Exp_ProtoSAR/bent/cable_gland_014.ply",
+                     "--opath", "/media/i9/gamma/Exp_ProtoSAR/bent/out"],
             "cwd": "${workspaceFolder}"
         }
     ]

@@ -1,8 +1,8 @@
 #include <iostream>
 #include "SegFSR.h"
 #include <opencv2/opencv.hpp>
-#include<cstdlib>
-#include<ctime>
+#include <cstdlib>
+#include <ctime>
 #include <stdio.h>
 #include "PCLExtend.h"
 using namespace std;
@@ -43,6 +43,8 @@ double mean(vector<double>& dat)
 
 int main(int argc, char **argv)
 {	
+	cout<<"------------------------------------------------------------------"<<endl;
+
 	string ipath_of_ply, opath;
 	for(int i=1; i<argc; i++){
 		string s = argv[i];
@@ -66,14 +68,14 @@ int main(int argc, char **argv)
 	if (pcl::io::loadPLYFile<PointType>(ipath_of_ply, *cloud) == -1){
 		PCL_ERROR("Couldn't read file test_pcd.pcd \n");
 		return (-1);
-	}
-	
+	}	
 	
  	SegFSR alg;
 	alg.Init(cloud);
 	alg.Run();
 	alg.ExtractLabels( opath + "/" + fname +"_segfsr.txt");
 	alg.ExtractFilterCloud(opath + "/" + fname + "_segfsr.ply");
+	alg.PrintLogs(ipath_of_ply);
 
 	return 0;
 }

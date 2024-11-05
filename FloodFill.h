@@ -27,6 +27,16 @@ class Vertices{
 		}
 	}
 
+	Vertices() {};
+
+	// 拷贝构造函数（深度拷贝）
+    Vertices(const Vertices& other) {
+        // 深拷贝 dat_（由于list自动处理深拷贝，因此直接赋值即可）
+        dat_ = other.dat_;
+
+        it_=other.it_;
+    }
+
 };
 class FloodFill
 {
